@@ -1,0 +1,22 @@
+#!/bin/bash
+
+VENV_DIR="venv"
+
+if [ -z "$VIRTUAL_ENV" ] ; then
+  if [ ! -d "$VENV_DIR" ] ; then
+    echo "No virtual env found  @ $VENV_DIR"
+    echo
+    echo "Create with 'python3 -m venv venv'"
+    exit 1
+  fi
+  source $VENV_DIR/bin/activate
+fi
+
+if type mkdocs 2>/dev/null ; then
+  mkdocs serve
+else
+  echo "mkdocs not found!"
+  echo
+  echo "Try 'pip install -r requirements.txt' after sourcing the virtual environment"
+  exit 1
+fi
