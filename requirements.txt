@@ -1,3 +1,4 @@
 mkdocs-material
 pre-commit
 mdformat
+watchdog
