@@ -12,7 +12,7 @@ if [ -z "$VIRTUAL_ENV" ] ; then
   source $VENV_DIR/bin/activate
 fi
 
-if type mkdocs 2>/dev/null ; then
+if type mkdocs >/dev/null ; then
   set -ex
   mkdocs serve
 else

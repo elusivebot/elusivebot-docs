@@ -12,7 +12,7 @@ if [ -z "$VIRTUAL_ENV" ] ; then
   source $VENV_DIR/bin/activate
 fi
 
-if type mdformat 2>/dev/null ; then
+if type mdformat >/dev/null ; then
   set -ex
   mdformat .
 else

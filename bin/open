@@ -1,0 +1,15 @@
+#!/bin/bash
+
+URL="http://127.0.0.1:8000/"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  set -ex
+  open $URL
+else
+  if type xdg-open >/dev/null ; then
+    set -ex
+    xdg-open $URL
+  else
+    echo $URL
+  fi
+fi
