@@ -2,9 +2,10 @@
 
 ## Installation
 
-- Create a Python virtual environment using `python3 -m venv venv`.
+- Create a Python virtual environment using `python3 -m venv venv`
 - Activate the environment with `source venv/bin/activate`
 - Install the dependencies `pip3 install -r requirements.txt`
+- Install the pre-commit hook `pre-commit install`
 
 ## Usage
 
