@@ -2,28 +2,20 @@
 
 ## Installation
 
-Create a Python virtual environment:
-
-`python3 -m venv venv`
-
-And active it:
-
-`source venv/bin/activate`
-
-Install dependencies
-
-`pip3 install -r requirements.txt`
+- Create a Python virtual environment using `python3 -m venv venv`.
+- Activate the environment with `source venv/bin/activate`
+- Install the dependencies `pip3 install -r requirements.txt`
 
 ## Usage
 
-To view documents locally run:
+### Local
 
-`mkdocs serve`
+Run `./bin/serve` and view the results at [http://localhost:8080/](http://localhost:8080/).
 
-Build to site/ for deployment:
+### Build
 
-`mkdocs build`
+Run `./bin/build`.  The static website will be available at `<REPOSITORY>./site/`
 
 ## Appendex
 
-* https://squidfunk.github.io/mkdocs-material/
+- https://squidfunk.github.io/mkdocs-material/
