@@ -1,0 +1,16 @@
+@startuml sequence
+participant Developer
+participant Direct
+participant ElusiveBot
+
+Direct -> ElusiveBot : Open Redis connection
+Developer -> Direct : Open TCP socket
+Direct -> ElusiveBot : Register user and DM channel
+Developer -> Direct : Send string message
+Direct -> ElusiveBot : Queue message event
+ElusiveBot -> Direct : Queue response event
+Direct -> Developer : Format and forward message over TCP
+Developer -> Direct : Close TCP socket
+Direct -> ElusiveBot : Unregister user and channel
+
+@enduml

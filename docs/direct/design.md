@@ -12,6 +12,15 @@ service.  Connect to the Redis server, listen for TCP connections,
 create sending and receiving queues, pass newline messages to
 ElusiveBot, and forward responses to the client.
 
+<figure markdown>
+  ![Sequence diagram](/imgs/diagrams/direct/sequence.png)
+  <figcaption>Sequence diagram</figcaption>
+</figure>
+<figure markdown>
+  ![Architecture diagram](/imgs/diagrams/direct/architecture.png)
+  <figcaption>Architecture</figcaption>
+</figure>
+
 ## Requirements
 
 ### Functional

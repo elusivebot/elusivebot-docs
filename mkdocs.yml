@@ -1,3 +1,5 @@
 site_name: ElusiveBot
 theme:
   name: material
+markdown_extensions:
+  - md_in_html
