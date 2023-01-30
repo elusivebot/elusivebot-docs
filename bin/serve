@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Usage: ./bin/serve
+#
+# Serves a local copy of the static HTML site, rebuilding on changes.
 
 VENV_DIR="venv"
 

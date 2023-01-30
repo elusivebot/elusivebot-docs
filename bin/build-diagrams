@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# Usage: ./bin/build-diagrams [PLANTUML_FILE]
+#
+# Build all diagrams with no arguments, or pass specific puml files
+# as the arguments.
+
+PLANTUML="tools/plantuml-pdf-1.2023.0.jar"
+
+INDIR="diagrams"
+OUTDIR="$PWD/docs/imgs"
+
+if ! type java >/dev/null ; then
+  echo "Java not found!"
+  echo
+  echo "A recent JRE is required to generate PlantUML diagrams"
+  exit 1
+fi
+
+if [ $# -eq 0 ]; then
+  set -e
+  for d in $(find $INDIR -type d); do
+    in="$d/\*.puml"
+    out="$OUTDIR/$d"
+    echo "$in --> $out"
+    java -jar $PLANTUML -o $out $in
+  done
+else
+  for f in "$@"; do
+    dir=$(realpath $(dirname $f))
+    dir=${dir:${#PWD}:${#dir}-${#PWD}}
+    out="$OUTDIR$dir"
+    echo "$f --> $out"
+    java -jar $PLANTUML -o $out $f
+  done
+fi

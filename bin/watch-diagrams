@@ -1,10 +1,12 @@
 #!/bin/bash
 #
-# Usage: ./bin/format
+# Usage: ./bin/watch-diagrams
 #
-# Formats all Markdown files in the repository.
+# Builds all PlantUML diagrams.
 
 VENV_DIR="venv"
+
+INDIR="diagrams"
 
 if [ -z "$VIRTUAL_ENV" ] ; then
   if [ ! -d "$VENV_DIR" ] ; then
@@ -16,11 +18,19 @@ if [ -z "$VIRTUAL_ENV" ] ; then
   source $VENV_DIR/bin/activate
 fi
 
-if type mdformat >/dev/null ; then
+./bin/build-diagrams
+
+if type watchmedo >/dev/null ; then
   set -ex
-  mdformat .
+  watchmedo shell-command \
+    --patterns="*.puml" \
+    --recursive \
+    --verbose \
+    --wait \
+    --command='./bin/build-diagrams ${watch_src_path}'
+    $INDIR
 else
-  echo "mdformat not found!"
+  echo "watchmedo not found!"
   echo
   echo "Try 'pip install -r requirements.txt' after sourcing the virtual environment"
   exit 1

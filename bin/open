@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Usage: ./bin/open
+#
+# Opens a web browser to the locally served static HTML site.
 
 URL="http://127.0.0.1:8000/"
 
