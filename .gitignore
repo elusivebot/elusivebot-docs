@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+.*.sw*
+.DS_Store
+
 site/
 
 /docs/imgs/diagrams/**/*.png
