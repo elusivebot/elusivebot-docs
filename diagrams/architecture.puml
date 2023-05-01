@@ -1,59 +1,55 @@
 @startuml architecture
 
-cloud Discord
+cloud Cloud
 
-node {
-    [Discord Service] as discord_service
-}
-
-cloud Web
-
-node {
-    [HTTP Frontend] as http_frontend
-    [HTTP Backend] as http_backend
+node Endpoints {
+    [Discord Service] as discord
+    [HTTP Service] as http
 }
 
 database Redis {
-    [Message Event Queue] as messages
-    [Response Event Queue] as responses
-
     [Message Log] as message_log
     [User State] as user_state
+
+    [Channel Update] as channel_updates
 }
 
 node Messages {
-    [Comprehend Function] as comprehend_handler
+    [Message Processing] as message_processing
 }
 
 node Behaviors {
-    [Behavior Fanout Function] as behavior_fanout
-    [F-Chain Function] as f_chain
+    [Behavior Fanout] as behavior_fanout
+    [Pattern Matching] as behavior_patterns
+    [TBD Behavior] as behavior_placeholder
 }
 
-node Users {
-    [User Function] as user_func
+node Decision {
+    [Decider] as decision_service
 }
 
-Web <--> http_frontend
-http_frontend <-> http_backend
+node Executors {
+    [Response Service] as response_service
+}
 
-http_backend --> messages
-http_backend --> user_func
-responses --> http_backend
+Cloud <--> Endpoints
 
+Endpoints --> message_processing
+Endpoints --> user_state
+Endpoints --> channel_updates
 
-Discord <--> discord_service
+message_processing --> message_log
+message_processing --> channel_updates
 
-discord_service --> messages
-discord_service --> user_func
-responses --> discord_service
+channel_updates --> behavior_fanout
 
-messages --> comprehend_handler
-comprehend_handler --> message_log
-comprehend_handler --> behavior_fanout
+behavior_fanout --> behavior_patterns
+behavior_fanout --> behavior_placeholder
 
-behavior_fanout --> f_chain
+Behaviors ---> Decision
 
-f_chain -> responses
+Decision ---> Executors
+
+response_service --> Endpoints
 
 @enduml
