@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Usage: ./bin/serve
+# Usage: ./bin/serve [mkdocs-options]
 #
 # Serves a local copy of the static HTML site, rebuilding on changes.
 
@@ -18,7 +18,7 @@ fi
 
 if type mkdocs >/dev/null ; then
   set -ex
-  mkdocs serve
+  mkdocs serve $@
 else
   echo "mkdocs not found!"
   echo
