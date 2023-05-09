@@ -24,11 +24,8 @@ def _process_directory(indir, outdir):
     _run(source, destination)
 
 def _process_file(infile, outdir):
-    source = INDIR / infile.relative_to(INDIR.resolve())
+    source = (INDIR / infile).resolve().relative_to(INDIR.resolve())
     destination = (OUTDIR / source.parent).resolve()
-    #_run(infile, outdir
-    #print(infile, outdir, infile.relative_to(INDIR.resolve()))
-    #print(source, destination)
     _run(source, destination)
 
 def _run(source, destination):
