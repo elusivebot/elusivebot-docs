@@ -6,6 +6,16 @@
 !include <tupadr3/font-awesome-5/server>
 
 FA5_USER(developer, developer)
-FA5_SERVER(direct, "HTTP Service")
+FA5_SERVER(http, "HTTP Service")
+
+DEV2_REDIS(event_queue, "Event Queue", database)
+DEV2_REDIS(action_queue, "Action Queue", database)
+
+developer -l-> http : send messages
+http -u-> developer: send responses
+
+http -> event_queue : Push status updates
+action_queue -> http: Push agent actions back to user
+
 
 @enduml
