@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Usage: ./bin/docker/down
+#
+# Destroys the internal documentation service container
+
+
+if type docker >/dev/null ; then
+    set -ex
+    sudo docker compose --project-name elusivebot down
+else
+    echo "Docker not found!"
+    exit 1
+fi

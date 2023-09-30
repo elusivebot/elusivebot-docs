@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Usage: ./bin/docker/docker
+#
+# Builds the Docker docs image.  Not required for Docker up script.
+
+if type docker >/dev/null ; then
+    set -ex
+    ./bin/build
+
+    sudo docker build -t elusivebot/docs:latest .
+else
+    echo "Docker not found!"
+    exit 1
+fi

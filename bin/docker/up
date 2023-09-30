@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Usage: ./bin/docker/up
+#
+# Launches the internal documentation service
+
+if type docker >/dev/null ; then
+    set -ex
+    ./bin/build
+
+    sudo docker compose --project-name elusivebot up --build --detach
+else
+    echo "Docker not found!"
+    exit 1
+fi
