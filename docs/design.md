@@ -4,20 +4,6 @@
 
 **So it's all quite simple you see....**
 
-* Events come the web to their corresponding endpoint/handler service.
-* Messages are passed to message processing function, which preprocesses
-  and applies any comprehension (tbd).
-* User state and message logs are updated by the handler.
-* A channel update event is queued.
-* Behavior fanout receives channel update, creates snapshot of channel
-  and sends to behavior services.
-* Behavior services send a list of possible actions to decision service.
-* Decision service evalutes and picks one (or no) to execute.
-* Chosen action is forwarded to the executor fanout, which forwards to
-  the corresponding executor services.
-* Executor service modifies Redis tables, enqueues responses for
-  endpoint/handler.
-
 ## Architecture
 
 <figure markdown>
@@ -25,10 +11,26 @@
   <figcaption>Architecture</figcaption>
 </figure>
 
-## Requirements
+### Edge
 
-### Functional
+Receives messaging service specific events from the cloud.  Messaging services include Discord, but also generic HTTP and TCP endpoints.
 
-### Non-Functional
+These events are converted to generic update events and passed to the processing layer.
 
-## Appendix
+### Processing
+
+Processes update events and modifies the user and message
+state.  Produces a snapshot of the channel state and passes to the
+behavior layer.
+
+### Behavior
+
+Passes channel state snapshot to behavior functions, and compiles a list
+of proposed actions for the executor layer.
+
+
+### Executor
+
+Selects which actions to perform.  Pushes tangible actions to
+corresponding ednpoint services in the Edge layer.
+

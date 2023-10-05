@@ -2,54 +2,33 @@
 
 cloud Cloud
 
-node Endpoints {
+node Edge {
     [Discord Service] as discord
     [HTTP Service] as http
 }
 
-database Redis {
-    [Message Log] as message_log
-    [User State] as user_state
-
-    [Channel Update] as channel_updates
-}
-
-node Messages {
+node Processing {
     [Message Processing] as message_processing
+    [User Processing] as user_processing
 }
 
-node Behaviors {
-    [Behavior Fanout] as behavior_fanout
+node Behavior {
     [Pattern Matching] as behavior_patterns
     [TBD Behavior] as behavior_placeholder
 }
 
-node Decision {
-    [Decider] as decision_service
-}
-
-node Executors {
+node Executor {
     [Response Service] as response_service
 }
 
-Cloud <--> Endpoints
+Cloud <--> Edge
 
-Endpoints --> message_processing
-Endpoints --> user_state
-Endpoints --> channel_updates
+Edge ---> Processing
 
-message_processing --> message_log
-message_processing --> channel_updates
+Processing ---> Behavior
 
-channel_updates --> behavior_fanout
+Behavior ---> Executor
 
-behavior_fanout --> behavior_patterns
-behavior_fanout --> behavior_placeholder
-
-Behaviors ---> Decision
-
-Decision ---> Executors
-
-response_service --> Endpoints
+Executor ---> Edge
 
 @enduml
