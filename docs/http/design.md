@@ -8,7 +8,7 @@ ElusiveBot locally without any public access for development and testing.
 ## Architecture
 
 <figure markdown>
-  ![Architecture diagram](/imgs/diagrams/http/architecture.png)
+  ![Architecture diagram](../imgs/diagrams/http/architecture.png)
   <figcaption>Architecture</figcaption>
 </figure>
 
