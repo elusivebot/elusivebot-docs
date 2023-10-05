@@ -7,7 +7,7 @@
 
 if type docker >/dev/null ; then
     set -ex
-    sudo docker compose --project-name elusivebot down
+    sudo docker compose --project-name elusivebot-docs down
 else
     echo "Docker not found!"
     exit 1
