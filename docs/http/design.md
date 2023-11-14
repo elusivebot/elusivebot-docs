@@ -16,10 +16,9 @@ ElusiveBot locally without any public access for development and testing.
 
 ### Functional
 
-* Must be written using TypeScript.  JSON schema can generate bindings in Java, Kotlin, or TypeScript as of this writing.
-* Must serve static Javascript/HTML UI.  Likely in Angular.
+- Must be written using TypeScript.  JSON schema can generate bindings in Java, Kotlin, or TypeScript as of this writing.
+- Must serve static Javascript/HTML UI.  Likely in Angular.
 
 ### Non-Functional
 
 ## Alternatives
-

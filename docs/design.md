@@ -28,9 +28,7 @@ behavior layer.
 Passes channel state snapshot to behavior functions, and compiles a list
 of proposed actions for the executor layer.
 
-
 ### Executor
 
 Selects which actions to perform.  Pushes tangible actions to
 corresponding ednpoint services in the Edge layer.
-
