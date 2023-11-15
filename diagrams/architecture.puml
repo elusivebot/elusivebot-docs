@@ -7,7 +7,7 @@ node Edge {
     [HTTP Service] as http
 }
 
-node Processing {
+node Data {
     [Message Processing] as message_processing
     [User Processing] as user_processing
 }
@@ -17,18 +17,20 @@ node Behavior {
     [TBD Behavior] as behavior_placeholder
 }
 
-node Executor {
+node Execution {
     [Response Service] as response_service
 }
 
 Cloud <--> Edge
 
-Edge ---> Processing
+Edge ---> Data
 
-Processing ---> Behavior
+Data ---> Behavior
 
-Behavior ---> Executor
+Behavior ---> Execution
 
-Executor ---> Edge
+Execution --> Data
+
+Execution ---> Edge
 
 @enduml
