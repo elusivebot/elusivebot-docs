@@ -14,14 +14,15 @@ def main():
             _process_file(Path(infile), OUTDIR)
     else:
         _process_directory(INDIR, OUTDIR)
-        for d in INDIR.iterdir():
-            if d.is_dir():
-                _process_directory(d, OUTDIR)
 
 def _process_directory(indir, outdir):
     source = "{}/*.puml".format(indir)
     destination = (outdir / indir).resolve()
     _run(source, destination)
+
+    for d in indir.iterdir():
+        if d.is_dir():
+            _process_directory(d, OUTDIR)
 
 def _process_file(infile, outdir):
     source = (INDIR / infile).resolve().relative_to(INDIR.resolve())
