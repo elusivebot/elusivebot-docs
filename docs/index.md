@@ -22,7 +22,7 @@ into smaller services written in any programming language.
 ## High Level Architecture
 
 <figure markdown>
-  [![Architecture diagram](imgs/diagrams/architecture.png)](design.md)
+  [Architecture diagram](imgs/diagrams/architecture.png)
   <figcaption>Architecture</figcaption>
 </figure>
 
