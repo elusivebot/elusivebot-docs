@@ -3,7 +3,7 @@ participant Developer
 participant Direct
 participant ElusiveBot
 
-Direct -> ElusiveBot : Open Redis connection
+Direct -> ElusiveBot : Open Kafka connection
 Developer -> Direct : Open TCP socket
 Direct -> ElusiveBot : Register user and DM channel
 Developer -> Direct : Send string message

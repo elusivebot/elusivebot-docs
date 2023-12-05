@@ -8,7 +8,7 @@ sending and receiving messages as in a chatroom.
 ## Architecture
 
 This will be a simple Kotlin coroutines driven message passing
-service.  Connect to the Redis server, listen for TCP connections,
+service.  Connect to the Kafka broker, listen for TCP connections,
 create sending and receiving queues, pass newline messages to
 ElusiveBot, and forward responses to the client.
 
@@ -38,10 +38,11 @@ ElusiveBot, and forward responses to the client.
 
 ### JSON messages
 
-This would allow the service to pass metadata and non text events,
-which might be desired in the future.  However, it would complicate
-interacting with the service and is not immediately necessary to
-fufill the requirements.
+Instead of sending and receiving raw text, delimited by newlines, the
+service could receive formatted data, likely JSON.  This would allow
+metadata to be transmitted, but increase the complexity of the service.
+
+Given it's not immediately useful, revisit if the need arises down the road.
 
 ### Higher level protocols
 

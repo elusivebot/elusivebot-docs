@@ -1,20 +1,20 @@
 @startuml architecture
 !include <tupadr3/common>
-!include <tupadr3/devicons2/redis>
+!include <logos/kafka>
 !include <tupadr3/font-awesome-5/user>
 !include <tupadr3/font-awesome-5/server>
 
 FA5_USER(developer, developer)
 FA5_SERVER(direct, "Direct Service")
 
-DEV2_REDIS(message_queue, "Message Queue", database)
-DEV2_REDIS(response_queue, "Response Queue", database)
-DEV2_REDIS(user_state, "User State", database)
+queue "<$kafka> Messages" as messages
+queue "<$kafka> User Events" as user_events
+queue "<$kafka> Responses" as responses
 
 developer --> direct : send messages
 direct --> developer : receive responses
 
-direct --> user_state : SET user status
-direct -> message_queue : RPUSH to main queue
-response_queue -> direct : RPUSH to user's queue
+direct --> user_events : Set user state
+direct -> messages : Push to service specific queue
+responses -> direct : Receive generated responses
 @enduml
