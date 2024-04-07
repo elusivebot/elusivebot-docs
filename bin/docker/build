@@ -8,7 +8,7 @@ if type docker >/dev/null ; then
     set -ex
     ./bin/build
 
-    sudo docker build -t elusivebot/docs:latest .
+    sudo docker build -t docker.degrendel.com/elusivebot/docs:latest .
 else
     echo "Docker not found!"
     exit 1

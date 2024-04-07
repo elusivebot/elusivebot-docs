@@ -1,9 +1,8 @@
-version: '3.8'
 services:
   docs:
     build:
       context: .
-    image: "elusivebot/docs:latest"
+    image: "docker.degrendel.com/elusivebot/docs:latest"
     container_name: "elusivebot.docs"
     ports:
      - "8080:80"
