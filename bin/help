@@ -4,7 +4,7 @@
 #
 # Prints an overview of all bundled scripts.
 
-set -x
+set -e
 
 echo "ElusiveBot Docs helper scripts"
 echo
