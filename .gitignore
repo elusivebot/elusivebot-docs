@@ -1,12 +1,16 @@
+# Python
 venv/
 __pycache__/
 *.py[cod]
 *$py.class
 
-
-.*.sw*
-.DS_Store
-
+# Production build
 site/
 
+# Generated diagrams
 /docs/imgs/diagrams/**/*.png
+
+# Misc
+.*.sw*
+.DS_Store
+._*
