@@ -2,9 +2,15 @@
 
 ## Requirements
 
-Python3 and a modern JVM must be installed.
+Python3, a modern JVM, and Graphviz must be installed.
 
 ## Installation
+
+### Automated
+
+- Run `./bin/init`
+
+### Manual
 
 - Create a Python virtual environment using `python3 -m venv venv`
 - Activate the environment with `source venv/bin/activate`

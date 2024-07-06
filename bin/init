@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if ! type python3 >/dev/null ; then
+  echo "python3 not found!"
+  exit 1
+fi
+
+if ! type javac >/dev/null ; then
+  echo "javac (JVM) not found!"
+  exit 1
+fi
+
+if ! type dot >/dev/null ; then
+  echo "dot (Graphviz) not found!"
+  exit 1
+fi
+
+set -ex
+
+if [ ! -L venv ]; then
+  python3 -m venv venv
+fi
+
+source venv/bin/activate
+
+pip3 install -r requirements.txt
+
+pre-commit install

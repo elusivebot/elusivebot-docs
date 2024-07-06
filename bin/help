@@ -11,6 +11,7 @@ echo
 echo "./bin/build           Builds static HTML and PlantUML diagrams for distribution"
 echo "./bin/build-diagrams  Builds PlantUML diagrams"
 echo "./bin/format          Formats all Markdown source files"
+echo "./bin/init            Perform environmental initialization"
 echo "./bin/open            Opens a web browser to the locally served HTML documentation"
 echo "./bin/serve           Builds and serves the HTML documentation, refreshing as source files change"
 echo "./bin/watch-diagrams  Watches and rebuilds PlantUML diagrams"
