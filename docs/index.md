@@ -35,14 +35,14 @@ specific data and events to generic messages for the data layer on
 input. Responsible for converting generic ElusiveBot actions into the
 service specific events.
 
-- [Edge](edge/index.md)
+- [Edge](edge/)
 
-### Data
+### State
 
 Processes and stores the persistent state of ElusiveBot, including
 message log for any channels, and the state of known external users.
 
-- [Data](data/index.md)
+- [State](state/)
 
 ### Behavior
 
@@ -50,11 +50,11 @@ Services woken by changes to the persistent state, such as incoming
 messages, and propose zero or more actions ElusiveBot may take in
 response.
 
-- [Behavior](behavior/index.md)
+- [Behavior](behavior/)
 
 ### Execution
 
-Selects zero or one proposed actions from behavior services, and commits
-to performing the action.
+Selects which, if any, proposed actions and performs them, involving
+persistent changes to the world.
 
-- [Execution](execution/index.md)
+- [Execution](execution/)
