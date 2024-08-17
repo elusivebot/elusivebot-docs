@@ -1,6 +1,9 @@
-# Design
+# Direct
 
-## Overview
+The **direct service** is a simple TCP service for developers to
+easily send text messages to ElusiveBot and receive responses.
+
+## Goal
 
 As a *developer*, I want a simple service that lets me simulate
 sending and receiving messages as in a chatroom.
@@ -13,11 +16,11 @@ create sending and receiving queues, pass newline messages to
 ElusiveBot, and forward responses to the client.
 
 <figure markdown>
-  ![Sequence diagram](../../imgs/diagrams/edge/direct/sequence.png)
+  ![Sequence diagram](../imgs/diagrams/edge/direct/sequence.png)
   <figcaption>Sequence diagram</figcaption>
 </figure>
 <figure markdown>
-  ![Architecture diagram](../../imgs/diagrams/edge/direct/architecture.png)
+  ![Architecture diagram](../imgs/diagrams/edge/direct/architecture.png)
   <figcaption>Architecture</figcaption>
 </figure>
 
@@ -46,16 +49,17 @@ Given it's not immediately useful, revisit if the need arises down the road.
 
 ### Higher level protocols
 
-ElusiveBot might need a WebSocket or a message queue equivalent.
+ElusiveBot might need a websocket or a message queue equivalent.
 This will be incorporated into a production service, rather than a
 simple developer tool.
 
 ### UDP
 
-TCP makes things simplier, in particular that this service does
+TCP makes things simpler, in particular that this service does
 care about ordering and reliability, which would need to be implemented
 to use UDP.
 
 ## Appendix
 
 - [Ktor raw sockets](https://ktor.io/docs/servers-raw-sockets.html)
+- [GitHub](https://github.com/elusivebot/elusivebot-direct)
